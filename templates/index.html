@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+
+<h1>Dashboard</h1>
+<div class="totals">
+    <div class="total-income">
+        <h3>Total Income</h3>
+        <p>${{ total-income }}</p>
+    </div>
+    <div class="total-expenses">
+        <h3>Total Expenses</h3>
+        <p>${{ total-expenses }}</p>
+    </div>
+</div>
+
+<h2>Recent Transactions</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction['title'] }}</td>
+            <td>{{ transaction['amount'] }}</td>
+            <td>{{ transaction['date'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
