@@ -1,53 +1,88 @@
+/* General Styles */
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-
-nav ul {
-    list-style-type: none;
     padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-.totals {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.total-income, .total-expenses {
-    background-color: #e0f7fa;
-    padding: 10px;
-    border-radius: 5px;
-    width: 150px;   
+h1, h2, h3 {
+    color: #444;
     text-align: center;
 }
 
-h1, h2 {
-    text-align: cneter;
+/* Dashboard Container */
+.totals {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
+/* Total Income and Expenses Boxes */
+.total-income, .total-expenses {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 40%;
+    transition: transform 0.2s;
+}
+
+.total-income:hover, .total-expenses:hover {
+    transform: scale(1.05);
+}
+
+.total-income h3, .total-expenses h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.total-income p, .total-expenses p {
+    font-size: 2em;
+    margin: 0;
+    color: #4CAF50; /* Green color for income */
+}
+
+.total-expenses p {
+    color: #F44336; /* Red color for expenses */
+}
+
+/* Recent Transactions Table */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
+thead {
+    background-color: #007bff; /* Blue header */
+    color: white;
 }
 
-th {
-    background-color: rgb(80, 80, 80);
-}
-
-td {
+th, td {
+    padding: 12px;
     text-align: center;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Light gray hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .totals {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .total-income, .total-expenses {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 }

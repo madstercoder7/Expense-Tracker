@@ -9,12 +9,20 @@ def get_db_connection():
     return conn
 
 @app.route('/')
-def index():
+def dashboard():
     conn = get_db_connection()
     transactions = conn.execute('SELECT * FROM transactions').fetchall()
-
     total_income = conn.execute('SELECT SUM(amount) FROM transactions WHERE amount > 0').fetchone()[0] or 0
-    total_expenses = conn.execute('SELDCT SUM(amount) FORM transactions WHERE amount < 0').fetchone()[0] or 0
+    total_expenses = conn.execute('SELECT SUM(amount) FROM transactions WHERE amount < 0').fetchone()[0] or 0
     conn.close()
-
     return render_template('index.html', transactions=transactions, total_income=total_income, total_expenses=total_expenses)
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

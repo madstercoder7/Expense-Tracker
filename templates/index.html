@@ -4,17 +4,22 @@
     Dashboard
 {% endblock %}
 
+{% block link %}
+    \static\styles.css
+{% endblock %}
+
 {% block main %}
 
+{% if session["user_id"] %}
 <h1>Dashboard</h1>
 <div class="totals">
     <div class="total-income">
         <h3>Total Income</h3>
-        <p>${{ total-income }}</p>
+        <p>${{ total_income }}</p>
     </div>
     <div class="total-expenses">
         <h3>Total Expenses</h3>
-        <p>${{ total-expenses }}</p>
+        <p>${{ total_expenses }}</p>
     </div>
 </div>
 
@@ -37,5 +42,6 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
 
 {% endblock %}
